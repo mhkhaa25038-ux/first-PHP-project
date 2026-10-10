@@ -1,0 +1,197 @@
+
+ /* --- RESET & LAYOUT CHUNG --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9; /* Màu nền trung tính của các trang Admin chuyên nghiệp */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Khung lớn chứa toàn bộ nội dung */
+.wrapper {
+    width: 98%;
+    max-width: 1400px; /* Độ rộng tối đa để không bị quá loãng trên màn hình 4K */
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh; /* Luôn cao bằng màn hình để footer nằm dưới cùng */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tiêu đề chào mừng trên cùng */
+.title_admin {
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 15px 0;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- CSS CHO PHẦN THỐNG KÊ (MORRIS CHART) --- */
+#chart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin: 20px 0;
+    height: 300px; /* Chiều cao cố định cho biểu đồ */
+}
+
+#text-date {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+/* Dropdown chọn ngày */
+.select-date {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+/* --- PHẦN MAIN CONTENT --- */
+/* Nơi chứa nội dung thay đổi theo menu (modules/main.php) */
+#main {
+    flex: 1; /* Tự động giãn nở để đẩy footer xuống */
+    background: #fff;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+        padding: 10px;
+    }
+    .title_admin {
+        font-size: 18px;
+    }
+}
+
+/* --- PHẦN HEADER & ĐĂNG XUẤT --- */
+.admin-header {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between; /* Đẩy tiêu đề sang trái, đăng xuất sang phải */
+    align-items: center;
+    padding: 10px 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.logout-container a {
+    text-decoration: none;
+    color: #e74c3c; /* Màu đỏ cho đăng xuất */
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    background: #fff5f5;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ffebeb;
+}
+
+.logout-container a:hover {
+    background: #e74c3c;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.2);
+}
+
+.user-name {
+    color: #2980b9; /* Màu xanh cho tên admin */
+    margin-left: 5px;
+    text-transform: capitalize;
+}
+
+/* Responsive cho điện thoại */
+@media screen and (max-width: 600px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* --- MENU ĐIỀU HƯỚNG ADMIN --- */
+ul.admincp_list {
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+    display: flex; /* Chuyển sang Flexbox để nằm ngang */
+    flex-wrap: wrap; /* Tự xuống dòng nếu quá nhiều mục */
+    background: #2c3e50; /* Màu nền xanh đậm sang trọng */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+ul.admincp_list li {
+    margin: 0;
+}
+
+ul.admincp_list li a {
+    display: block;
+    padding: 15px 20px;
+    color: #dfe6e9;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-right: 1px solid #34495e; /* Đường kẻ chia cách các mục */
+}
+
+/* Hiệu ứng khi di chuột qua hoặc mục đang chọn */
+ul.admincp_list li a:hover {
+    background: #3498db; /* Màu xanh sáng khi hover */
+    color: #fff;
+}
+
+/* Loại bỏ đường kẻ ở mục cuối cùng */
+ul.admincp_list li:last-child a {
+    border-right: none;
+}
+
+/* --- TÍCH HỢP THIẾT BỊ (RESPONSIVE) --- */
+
+/* Trên máy tính bảng và điện thoại */
+@media screen and (max-width: 992px) {
+    ul.admincp_list {
+        flex-direction: column; /* Chuyển thành menu dọc */
+    }
+    
+    ul.admincp_list li {
+        width: 100%;
+    }
+    
+    ul.admincp_list li a {
+        border-right: none;
+        border-bottom: 1px solid #34495e;
+        padding: 12px 20px;
+    }
+}
